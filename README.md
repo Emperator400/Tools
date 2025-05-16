@@ -40,7 +40,5 @@ ps2exe.ps1 -inputFile .\BackupTool.ps1 -outputFile .\BackupTool.exe -iconFile .\
 If logging is enabled (via checkbox in the GUI), a file named backup_log.txt will be created in the script directory, containing details of copied files and any errors.
 📸 Screenshot
 
-(Insert a screenshot of the GUI here, if you like)
-📜 License
 
-MIT License. Feel free to modify and use it in your own projects.![Screenshot 2025-05-16 160127](https://github.com/user-attachments/assets/702d8397-4fc8-4417-88fb-0c67687a08fc)
+![Screenshot 2025-05-16 160127](https://github.com/user-attachments/assets/41dd2348-b295-47ab-803d-bd5c3721909c)
