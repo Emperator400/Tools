@@ -34,7 +34,7 @@ This tool allows you to back up files and folders to a selected destination with
 To create an .exe from this PowerShell script:
 
 ```powershell
-ps2exe.ps1 -inputFile .\MyBackupTool.ps1 -outputFile .\BackupTool.exe -iconFile .\icon.ico
+ps2exe.ps1 -inputFile .\MyBackupTool.ps1 -outputFile .\MyBackupTool.exe -iconFile .\icon.ico
 ```
 📁 Log File
 
