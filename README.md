@@ -24,17 +24,18 @@ This tool allows you to back up files and folders to a selected destination with
 2. Run the script:
 
 ```powershell
-.\BackupTool.ps1
-
-    💡 Make sure you unblock the script if downloaded from the internet:
+.\MyBackupTool.ps1
+```
+💡 Make sure you unblock the script if downloaded from the internet:
     Right-click → Properties → "Unblock" checkbox → Apply
 
 ⚙️ Optional: Convert to EXE
 
 To create an .exe from this PowerShell script:
 
-ps2exe.ps1 -inputFile .\BackupTool.ps1 -outputFile .\BackupTool.exe -iconFile .\icon.ico
-
+```powershell
+ps2exe.ps1 -inputFile .\MyBackupTool.ps1 -outputFile .\BackupTool.exe -iconFile .\icon.ico
+```
 📁 Log File
 
 If logging is enabled (via checkbox in the GUI), a file named backup_log.txt will be created in the script directory, containing details of copied files and any errors.
