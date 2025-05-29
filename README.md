@@ -22,7 +22,9 @@ The tool uses a tabbed interface to separate these functionalities.
     - **File Count**: Displays the number of files found.
     - **Select/Deselect All**: Buttons to quickly select or deselect all files in the results.
     - **Delete Selected Files**: Users can delete one or more selected files from the search results with a confirmation prompt.
+    - 
  ![grafik](https://github.com/user-attachments/assets/7e673c1a-8338-4ce2-89ce-4e1e57aaf0b2)
+
  ![grafik](https://github.com/user-attachments/assets/c9826dc6-e0d5-4f4f-a145-94e43b4c35fe)
 
 
