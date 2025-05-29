@@ -22,6 +22,9 @@ The tool uses a tabbed interface to separate these functionalities.
     - **File Count**: Displays the number of files found.
     - **Select/Deselect All**: Buttons to quickly select or deselect all files in the results.
     - **Delete Selected Files**: Users can delete one or more selected files from the search results with a confirmation prompt.
+ ![grafik](https://github.com/user-attachments/assets/7e673c1a-8338-4ce2-89ce-4e1e57aaf0b2)
+ ![grafik](https://github.com/user-attachments/assets/c9826dc6-e0d5-4f4f-a145-94e43b4c35fe)
+
 
 ## Prerequisites
 - Windows operating system with PowerShell installed.
@@ -53,6 +56,3 @@ The tool uses a tabbed interface to separate these functionalities.
 - Ensure that you have sufficient disk space in the backup location.
 - The tool will notify you if the ZIP file is invalid or if there are any issues during the backup or file operations.
 - Deleting files is a permanent action. Be sure you want to remove them.
-
-## License
-This project is licensed under the MIT License. Feel free to modify and distribute as needed.
