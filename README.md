@@ -38,6 +38,10 @@ The tool uses a tabbed interface to separate these functionalities.
 2.  **Navigate Tabs**:
     *   Use the "Backup from ZIP" tab for backup operations.
     *   Use the "File Search & Manage" tab for finding and deleting files.
+3. Convert from .ps1 to .exe
+   ```Powershell
+   ps2exe -inputFile BackupfromZip_1.ps1" -outputFile "BackupAndFileTool.exe" -iconFile "icon.ico" -title "Backup and File Tool" -version "1.0.0.0" -noConsole
+   ```
 
 ### Backup from ZIP Tab
 1.  **Select ZIP File**: Click the "Browse" button next to the "ZIP File" label (or drag and drop a ZIP file onto the textbox) to select the ZIP file you want to back up.
