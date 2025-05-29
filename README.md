@@ -1,45 +1,58 @@
-# PowerShell Backup Tool
+# Backup and File Tool Documentation
 
-A lightweight and user-friendly backup utility written in PowerShell with a graphical user interface (GUI).  
-This tool allows you to back up files and folders to a selected destination with support for drag & drop, free space check, logging, and more.
+## Overview
+The Backup and File Tool is a PowerShell script designed to provide a user-friendly graphical interface for two main functionalities:
+1.  **Backup from ZIP**: Allows users to select a ZIP file, specify a backup folder, and perform the backup operation with real-time progress updates and error handling.
+2.  **File Search & Manage**: Enables users to search for files within a specified folder based on a name-containing term and delete selected files.
 
-## 🧰 Features
+The tool uses a tabbed interface to separate these functionalities.
 
-- Drag & drop support for file and folder selection
-- Checks if enough disk space is available before starting the backup
-- Displays backup progress with file names
-- Optional logging to a file
-- Remembers last used source and destination paths
-- Simple and clean user interface
-- Supports paths wrapped in quotation marks (`"C:\My Folder"`)
+## Features
+- **Tabbed Interface**: Organizes "Backup from ZIP" and "File Search & Manage" into separate tabs.
+- **Backup from ZIP**:
+    - **Select ZIP File**: Users can browse and select a ZIP file to back up.
+    - **Specify Backup Folder**: Users can choose the destination folder for the backup.
+    - **Progress Updates**: The tool provides visual feedback on the backup progress.
+    - **Error Handling**: Users are notified of any errors that occur during the backup process.
+    - **Log File Creation**: Option to create a log file detailing the backup process.
+- **File Search & Manage**:
+    - **Select Search Folder**: Users can browse or drag-and-drop a folder to search within.
+    - **Search by File Name**: Users can input a term to find files whose names contain that term.
+    - **Display Results**: Found files are listed, showing their full paths.
+    - **File Count**: Displays the number of files found.
+    - **Select/Deselect All**: Buttons to quickly select or deselect all files in the results.
+    - **Delete Selected Files**: Users can delete one or more selected files from the search results with a confirmation prompt.
 
-## ✅ Requirements
+## Prerequisites
+- Windows operating system with PowerShell installed.
+- .NET Framework (required for Windows Forms).
+- Access to the file system for reading ZIP files, writing backups, searching folders, and deleting files.
 
-- Windows PowerShell 5.1 or later
-- .NET Framework (included in most modern Windows systems)
+## How to Use
+1.  **Run the Script**: Open PowerShell and execute the `BackupfromZip_1.ps1` script, or run the compiled `BackupAndFileTool.exe`.
+2.  **Navigate Tabs**:
+    *   Use the "Backup from ZIP" tab for backup operations.
+    *   Use the "File Search & Manage" tab for finding and deleting files.
 
-## 🚀 Getting Started
+### Backup from ZIP Tab
+1.  **Select ZIP File**: Click the "Browse" button next to the "ZIP File" label (or drag and drop a ZIP file onto the textbox) to select the ZIP file you want to back up.
+2.  **Choose Backup Folder**: Click the "Browse" button next to the "Backup Folder" label (or drag and drop a folder onto the textbox) to specify where you want to save the backup.
+3.  **Log File Option**: If desired, check the "Create log file" checkbox to generate a log of the backup process.
+4.  **Start Backup**: Click the "Start Backup" button to begin the backup process. Monitor the progress bar for updates.
 
-1. Clone or download the repository.
-2. Run the script:
+### File Search & Manage Tab
+1.  **Select Search Folder**: Click the "Browse" button next to the "Search Folder:" label (or drag and drop a folder onto the textbox) to choose the directory you want to search in.
+2.  **Enter Search Term**: In the "File Name Contains:" textbox, type the text you want to find within file names.
+3.  **Start Search**: Click the "Search" button.
+4.  **Review Results**: The list box will populate with files matching your criteria. The "Files found:" label will update.
+5.  **Manage Files**:
+    *   Select files in the list (use Ctrl-click for multiple individual files, Shift-click for a range, or the "Select All" / "Deselect All" buttons).
+    *   Click "Delete Selected" to remove the chosen files. You will be asked for confirmation.
 
-```powershell
-.\MyBackupTool.ps1
-```
-💡 Make sure you unblock the script if downloaded from the internet:
-    Right-click → Properties → "Unblock" checkbox → Apply
+## Notes
+- Ensure that you have sufficient disk space in the backup location.
+- The tool will notify you if the ZIP file is invalid or if there are any issues during the backup or file operations.
+- Deleting files is a permanent action. Be sure you want to remove them.
 
-⚙️ Optional: Convert to EXE
-
-To create an .exe from this PowerShell script:
-
-```powershell
-ps2exe.ps1 -inputFile .\MyBackupTool.ps1 -outputFile .\MyBackupTool.exe -iconFile .\icon.ico
-```
-📁 Log File
-
-If logging is enabled (via checkbox in the GUI), a file named backup_log.txt will be created in the script directory, containing details of copied files and any errors.
-📸 Screenshot
-
-
-![Screenshot 2025-05-16 160127](https://github.com/user-attachments/assets/41dd2348-b295-47ab-803d-bd5c3721909c)
+## License
+This project is licensed under the MIT License. Feel free to modify and distribute as needed.
