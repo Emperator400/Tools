@@ -6,7 +6,7 @@ $RepoUser = "Emperator400"
 $RepoName = "Tools"
 $ScriptName = "BackupfromZip_1.ps1"
 $ExeName = "OfficeManager.exe"
-$VersionLocal = "1.0.0"  # Diese Zahl bei jeder neuen Version anpassen!
+$VersionLocal = "1.1.0.0"  # Diese Zahl bei jeder neuen Version anpassen!
 
 $InstallFolder = "$env:LOCALAPPDATA\OfficeManager"
 $TargetExe = Join-Path $InstallFolder $ExeName
