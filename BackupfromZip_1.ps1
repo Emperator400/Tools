@@ -1,5 +1,5 @@
 # ================================
-# OfficeManager Auto-Updater
+# 🛠️ OfficeManager Auto-Updater
 # ================================
 
 $RepoUser = "Emperator400"
@@ -20,26 +20,26 @@ $TempScript   = "$env:TEMP\OfficeManager_Update.ps1"
 try {
     $OnlineVersion = Invoke-RestMethod -Uri $VersionUrl -UseBasicParsing
     if ($OnlineVersion -ne $VersionLocal) {
-        Write-Host "Neue Version gefunden ($OnlineVersion). Lade herunter..."
+        Write-Host "🆕 Neue Version gefunden ($OnlineVersion). Lade herunter..."
 
-        # Sicherstellen, dass Installationsordner existiert
+        # 📂 Sicherstellen, dass Installationsordner existiert
         if (!(Test-Path $InstallFolder)) {
             New-Item -ItemType Directory -Path $InstallFolder | Out-Null
         }
 
-        #Skript herunterladen
+        # ⬇️ Skript herunterladen
         Invoke-WebRequest -Uri $ScriptRawUrl -OutFile $TempScript -UseBasicParsing
 
-        # ps2exe installieren falls nötig
+        # 🔧 ps2exe installieren falls nötig
         if (-not (Get-Command Invoke-ps2exe -ErrorAction SilentlyContinue)) {
             Install-Module -Name ps2exe -Scope CurrentUser -Force -AllowClobber
         }
 
-        # Konvertiere PS1 → EXE
+        # 🔄 Konvertiere PS1 → EXE (ohne -force Parameter)
         Import-Module ps2exe -Force
-        Invoke-ps2exe -inputFile $TempScript -outputFile $TargetExe -noConsole -force
+        Invoke-ps2exe -inputFile $TempScript -outputFile $TargetExe -noConsole
 
-        Write-Host "Neue EXE gespeichert unter: $TargetExe"
+        Write-Host "✅ Neue EXE gespeichert unter: $TargetExe"
 
         # 🔗 Desktop-Verknüpfung erstellen
         $WScriptShell = New-Object -ComObject WScript.Shell
@@ -51,15 +51,16 @@ try {
 
         Write-Host "🔗 Verknüpfung erstellt/aktualisiert: $ShortcutPath"
 
-        # Starte neue Version
+        # ▶️ Starte neue Version
         Start-Process -FilePath $TargetExe
         exit
     } else {
-        Write-Host "OfficeManager ist aktuell (Version $VersionLocal)"
+        Write-Host "✅ OfficeManager ist aktuell (Version $VersionLocal)"
     }
 } catch {
-    Write-Warning "Fehler bei Updateprüfung oder Umwandlung: $_"
+    Write-Warning "⚠️ Fehler bei Updateprüfung oder Umwandlung: $_"
 }
+
 
 
 
