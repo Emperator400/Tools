@@ -1,5 +1,71 @@
+# ================================
+# OfficeManager Auto-Updater
+# ================================
+
+$RepoUser = "Emperator400"
+$RepoName = "Tools"
+$ScriptName = "BackupfromZip_1.ps1"
+$ExeName = "OfficeManager.exe"
+$VersionLocal = "1.0.0"  # Diese Zahl bei jeder neuen Version anpassen!
+
+$InstallFolder = "$env:LOCALAPPDATA\OfficeManager"
+$TargetExe = Join-Path $InstallFolder $ExeName
+$ShortcutPath = "$env:USERPROFILE\Desktop\OfficeManager starten.lnk"
+
+$ScriptRawUrl = "https://raw.githubusercontent.com/$RepoUser/$RepoName/main/$ScriptName"
+$VersionUrl   = "https://raw.githubusercontent.com/$RepoUser/$RepoName/main/version.txt"
+$TempScript   = "$env:TEMP\OfficeManager_Update.ps1"
+
+# 📥 Prüfe auf neue Version
+try {
+    $OnlineVersion = Invoke-RestMethod -Uri $VersionUrl -UseBasicParsing
+    if ($OnlineVersion -ne $VersionLocal) {
+        Write-Host "Neue Version gefunden ($OnlineVersion). Lade herunter..."
+
+        # Sicherstellen, dass Installationsordner existiert
+        if (!(Test-Path $InstallFolder)) {
+            New-Item -ItemType Directory -Path $InstallFolder | Out-Null
+        }
+
+        #Skript herunterladen
+        Invoke-WebRequest -Uri $ScriptRawUrl -OutFile $TempScript -UseBasicParsing
+
+        # ps2exe installieren falls nötig
+        if (-not (Get-Command Invoke-ps2exe -ErrorAction SilentlyContinue)) {
+            Install-Module -Name ps2exe -Scope CurrentUser -Force -AllowClobber
+        }
+
+        # Konvertiere PS1 → EXE
+        Import-Module ps2exe -Force
+        Invoke-ps2exe -inputFile $TempScript -outputFile $TargetExe -noConsole -force
+
+        Write-Host "Neue EXE gespeichert unter: $TargetExe"
+
+        # 🔗 Desktop-Verknüpfung erstellen
+        $WScriptShell = New-Object -ComObject WScript.Shell
+        $Shortcut = $WScriptShell.CreateShortcut($ShortcutPath)
+        $Shortcut.TargetPath = $TargetExe
+        $Shortcut.WorkingDirectory = $InstallFolder
+        $Shortcut.IconLocation = "$TargetExe, 0"
+        $Shortcut.Save()
+
+        Write-Host "🔗 Verknüpfung erstellt/aktualisiert: $ShortcutPath"
+
+        # Starte neue Version
+        Start-Process -FilePath $TargetExe
+        exit
+    } else {
+        Write-Host "OfficeManager ist aktuell (Version $VersionLocal)"
+    }
+} catch {
+    Write-Warning "Fehler bei Updateprüfung oder Umwandlung: $_"
+}
+
+
+
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.IO.Compression.FileSystem
+
 
 # --- Debug Logging Start ---
 $debugLogPath = Join-Path $env:TEMP "BackupToolIconDebug.log"
